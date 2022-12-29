@@ -27,12 +27,21 @@ const App = () => {
     }
   ])
 
+  // Function to delete a task
+  const deleteTask = (id) => {
+    console.log('delete', id);
+  }
+
+
+
   return (
     // The root component: App returns what looks like html
     // but its actually JSX/JS Syntax Extension.
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} />
+      // Passing the tasks array and the deleteTask function as
+      // props to the Tasks component
+      <Tasks tasks={tasks} onDelete={deleteTask}/>
     </div>
   );
 }

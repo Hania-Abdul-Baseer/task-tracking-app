@@ -43,7 +43,13 @@ const App = () => {
   // Function to toggle reminder based on the id that is 
   // given to it.
   const toggleReminder = (id) => {
-    setTasks(tasks.map((task) => task.id === id ? 
+    // .map takes in a function that is applied to each element of the
+    // task array, this function takes in a task
+    // and if the task has the same id as the id supplied to the 
+    // toggleReminder function originally, then the task's reminder
+    // state variable switches from what it was before. Otherwise, no
+    // state varibale of the task is changed.
+    setTasks(tasks.map( (task) => task.id === id ? 
     { ...task, reminder: !task.reminder} : task))
   }
 

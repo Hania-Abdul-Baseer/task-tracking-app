@@ -8,7 +8,13 @@ import { FaTimes } from 'react-icons/fa'
 const Task = ({ task, onDelete, onToggle }) => {
     
     return (
-      <div className='task' onDoubleClick={ () => 
+      // The className is inside a curly bracket as we want to use an
+      // expression. The className will always be 'task' but it will 
+      // also be 'reminder' if the task's reminder is set to true 
+      // otherwise the className will only be 'task'.
+      // We want this, so that for task's with reminder the css style 
+      // class that creates a green border is applied.
+      <div className={`task ${task.reminder ? 'reminder' : ''}`} onDoubleClick={ () => 
       onToggle(task.id)}>
           <h3>
               {task.text} <FaTimes style={{ color: 

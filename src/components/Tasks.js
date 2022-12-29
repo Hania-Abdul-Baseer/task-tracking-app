@@ -1,6 +1,9 @@
 import Task from './Task'
 
-const Tasks = ({ tasks, onDelete }) => {
+// The Tasks component catches the props that are given to
+// it: array of tasks, function to delete task and a 
+// function to toggle reminder for a task.
+const Tasks = ({ tasks, onDelete, onToggle }) => {
   return (
     <>
         {/* We are looping through each task in the
@@ -10,7 +13,7 @@ const Tasks = ({ tasks, onDelete }) => {
         Task component. */}
         {tasks.map((task) => (
             <Task key={task.id} task={task} 
-            onDelete={onDelete}/>
+            onDelete={onDelete} onToggle={onToggle}/>
         ))}
     </>
   )

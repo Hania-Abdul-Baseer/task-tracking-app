@@ -2,10 +2,14 @@
 // icons as components.
 import { FaTimes } from 'react-icons/fa'
 
-const Task = ({ task, onDelete }) => {
+// The Task component catches the props that are passed to
+// it: the array of tasks, function for deleting a task and
+// a function to toggle reminder for a task.
+const Task = ({ task, onDelete, onToggle }) => {
     
     return (
-      <div className='task'>
+      <div className='task' onDoubleClick={ () => 
+      onToggle(task.id)}>
           <h3>
               {task.text} <FaTimes style={{ color: 
               'red', cursor: 'pointer' }} 
@@ -14,7 +18,7 @@ const Task = ({ task, onDelete }) => {
               function is called, which calls the onDelete
               function and passes the task's id as a 
               parameter. */}
-              
+
               {/* The above onDelete function will move to
                Tasks then to App, where its defined. 
                This is because the function was

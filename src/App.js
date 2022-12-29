@@ -27,7 +27,8 @@ const App = () => {
     }
   ])
 
-  // Function to delete a task
+  // Function to delete a task based on the id that is
+  // given to it.
   const deleteTask = (id) => {
     // setTasks is the function from useState that allows
     // you to update the state varibales inside functions.
@@ -37,6 +38,13 @@ const App = () => {
     // elements that dont have the same task.id as id thats 
     // passed to the deleteTask function originally.
     setTasks(tasks.filter( (task) => task.id !== id ))
+  }
+
+  // Function to toggle reminder based on the id that is 
+  // given to it.
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => task.id === id ? 
+    { ...task, reminder: !task.reminder} : task))
   }
 
   return (
@@ -49,11 +57,12 @@ const App = () => {
         the Tasks component. This is written inside the 
         curly brackets because its a js expression.
 
-        Passing the tasks array and the deleteTask function
-        as props to the Tasks component*/} 
+        Passing the tasks array, deleteTask, and the
+        toggleReminder function as props to the Tasks 
+        component*/} 
       {
         tasks.length > 0 ? <Tasks tasks={tasks} onDelete=
-        {deleteTask}/> : 'No tasks to show'
+        {deleteTask} onToggle={toggleReminder}/> : 'No tasks to show'
       }
     </div>
   );

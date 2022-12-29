@@ -29,19 +29,32 @@ const App = () => {
 
   // Function to delete a task
   const deleteTask = (id) => {
-    console.log('delete', id);
+    // setTasks is the function from useState that allows
+    // you to update the state varibales inside functions.
+    // .filter takes in a function and based on the output
+    // of the function, returns the elements from the array
+    // that pass that function. Here the function returns 
+    // elements that dont have the same task.id as id thats 
+    // passed to the deleteTask function originally.
+    setTasks(tasks.filter( (task) => task.id !== id ))
   }
-
-
 
   return (
     // The root component: App returns what looks like html
     // but its actually JSX/JS Syntax Extension.
     <div className="container">
       <Header />
-      // Passing the tasks array and the deleteTask function as
-      // props to the Tasks component
-      <Tasks tasks={tasks} onDelete={deleteTask}/>
+      {/* If the length of the tasks array is less than 0
+        then display: 'No tasks to show' otherwise display 
+        the Tasks component. This is written inside the 
+        curly brackets because its a js expression.
+
+        Passing the tasks array and the deleteTask function
+        as props to the Tasks component*/} 
+      {
+        tasks.length > 0 ? <Tasks tasks={tasks} onDelete=
+        {deleteTask}/> : 'No tasks to show'
+      }
     </div>
   );
 }

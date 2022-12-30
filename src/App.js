@@ -28,6 +28,11 @@ const App = () => {
     }
   ])
 
+  // Function to add a Task
+  const addTask = (task) => {
+    console.log(task);
+  }
+
   // Function to delete a task based on the id that is
   // given to it.
   const deleteTask = (id) => {
@@ -59,7 +64,7 @@ const App = () => {
     // but its actually JSX/JS Syntax Extension.
     <div className="container">
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask}/>
       {/* If the length of the tasks array is less than 0
         then display: 'No tasks to show' otherwise display 
         the Tasks component. This is written inside the 

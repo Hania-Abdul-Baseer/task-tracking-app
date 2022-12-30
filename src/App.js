@@ -10,7 +10,7 @@ const App = () => {
 
   // This state is a boolean used to toggle between showing the 
   // form for adding a task and not showing the form.
-  const [showAddTask, setShowAddTask] = useState(false);
+  const [showAddTask, setShowAddTask] = useState(false)
 
   // This state stores the array of tasks.
   const [tasks, setTasks] = useState([
@@ -78,13 +78,17 @@ const App = () => {
   return (
     // The root component: App returns what looks like html
     // but its actually JSX/JS Syntax Extension.
-    <div className="container">
+    <div className='container'>
       {/* onAdd function is passed to the Header component as a prop.
       Which is a function that calls another function which sets the
       showAddTask boolean state variable to the opposite of what it
       was before. */}
       <Header onAdd={() => setShowAddTask(!showAddTask)} 
-      showAdd={showAddTask} />
+      showAdd={showAddTask}/>
+      {/*
+      {onAdd={() => setShowAddTask(!showAddTask)
+      showAdd={showAddTask} 
+      */}
       {/* If the showAddTask boolean is set to true then we show
       the AddTask component otherwise we show nothing. This logic
       is applied using the '&&' operator in the expression below. */}

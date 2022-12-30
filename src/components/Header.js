@@ -10,9 +10,10 @@ const Header = ({ title, onAdd, showAdd }) => {
         {/* The Header component uses the Button component
         and supplies it with the specific prop values.
         This will now render a green button that says: Add */}
-        <Button color={showAdd ? 'red' : 'green'} 
-        text={showAdd ? 'Close' : 'Add' } 
-        onClick={onAdd}/>
+        <Button 
+          color={showAdd ? 'red' : 'green'} 
+          text={showAdd ? 'Close' : 'Add' } 
+          onClick={onAdd} />
     </header>
   )
 }

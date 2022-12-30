@@ -2,15 +2,17 @@ import PropTypes from 'prop-types'
 import Button from './Button'
 
 // Defining the Header component using an arrow function
-// The component takes in a prop called: title
-const Header = ({ title }) => {
+// The component takes in props called: title, onAdd, and showAdd.
+const Header = ({ title, onAdd, showAdd }) => {
   return (
     <header className='header'>
         <h1>{title}</h1>
         {/* The Header component uses the Button component
         and supplies it with the specific prop values.
         This will now render a green button that says: Add */}
-        <Button color='green' text='Add'/>
+        <Button color={showAdd ? 'red' : 'green'} 
+        text={showAdd ? 'Close' : 'Add' } 
+        onClick={onAdd}/>
     </header>
   )
 }

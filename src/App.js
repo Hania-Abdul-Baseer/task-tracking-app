@@ -7,6 +7,12 @@ const App = () => {
   // We have the state below at the top level i.e in App.js
   // because we want all other sub components to be able 
   // to use it, if needed.
+
+  // This state is a boolean used to toggle between showing the 
+  // form for adding a task and not showing the form.
+  const [showAddTask, setShowAddTask] = useState(false);
+
+  // This state stores the array of tasks.
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -28,9 +34,19 @@ const App = () => {
     }
   ])
 
-  // Function to add a Task
+  // Function to add a Task, and it takes in a task.
   const addTask = (task) => {
-    console.log(task);
+    // Generates a random number to be used for the id of the 
+    // new task.
+    const id = Math.floor(Math.random()+1000) + 1;
+
+    // Creating a new task object with the 'task' state given to
+    // the function and the generated id.
+    const newTask = { id, ...task }
+
+    // Using setTasks to add the new task object to the array of
+    // the tasks state.
+    setTasks([...tasks, newTask]);
   }
 
   // Function to delete a task based on the id that is
@@ -63,8 +79,16 @@ const App = () => {
     // The root component: App returns what looks like html
     // but its actually JSX/JS Syntax Extension.
     <div className="container">
-      <Header />
-      <AddTask onAdd={addTask}/>
+      {/* onAdd function is passed to the Header component as a prop.
+      Which is a function that calls another function which sets the
+      showAddTask boolean state variable to the opposite of what it
+      was before. */}
+      <Header onAdd={() => setShowAddTask(!showAddTask)} 
+      showAdd={showAddTask} />
+      {/* If the showAddTask boolean is set to true then we show
+      the AddTask component otherwise we show nothing. This logic
+      is applied using the '&&' operator in the expression below. */}
+      { showAddTask && <AddTask onAdd={addTask}/>}
       {/* If the length of the tasks array is less than 0
         then display: 'No tasks to show' otherwise display 
         the Tasks component. This is written inside the 

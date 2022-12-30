@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 
 const App = () => {
   // We have the state below at the top level i.e in App.js
@@ -58,6 +59,7 @@ const App = () => {
     // but its actually JSX/JS Syntax Extension.
     <div className="container">
       <Header />
+      <AddTask />
       {/* If the length of the tasks array is less than 0
         then display: 'No tasks to show' otherwise display 
         the Tasks component. This is written inside the 
